@@ -3,4 +3,4 @@ project(os_homework C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(os_homework week1/main.c)
+add_executable(os_homework week01/main.c)
