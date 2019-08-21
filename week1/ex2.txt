@@ -1,0 +1,10 @@
+  769  ls /usr/bin | grep 'gcc]
+  770  ls /usr/bin | grep 'gcc'
+  771  ls /usr/bin | sort -r| grep 'gcc'
+  772  ls /usr/bin | sort -r| grep 'gcc' > ex1.txt
+  773  history\
+  774  history
+  775  history -tail 10
+  776  history | tail 10
+  777  history | tail -n 10
+  778  history | tail -n 10 > ex2.txt
