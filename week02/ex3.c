@@ -39,14 +39,17 @@ void rectangle(int total, int level, LevelInfo * data_ptr) {
     data_ptr->stars = total;
 }
 
-int main() {
+int main(int argc, char** argv) {
     int n, type;
 
-    printf("Enter N: ");
-    scanf("%d", &n);
+    if (argc != 3) {
+        printf("Wrong number of arguments\n");
+        return 1;
+    }
 
-    printf("Enter type(0 - tree, 1 - half-tree, 2 - triangle, 3 - rectangle): ");
-    scanf("%d", &type);
+    n = atoi(argv[1]);
+
+    type = atoi(argv[2]);
 
     level_funct level_function;
 
