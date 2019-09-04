@@ -7,15 +7,15 @@
 
 struct BaseCell {
     int number;
-    struct BaseCell * next;
+    struct BaseCell *next;
 };
 
 typedef struct BaseCell Cell;
 
-typedef Cell* List;
+typedef Cell *List;
 
-Cell * create_node(int number) {
-    Cell * result = malloc(sizeof(Cell));
+Cell *create_node(int number) {
+    Cell *result = malloc(sizeof(Cell));
 
     result->number = number;
     result->next = NULL;
@@ -37,12 +37,12 @@ void insert_node_beginning(Cell *cell, List *listPtr) {
 
 
 void insert_beginning(int number, List *listPtr) {
-    Cell * cell = create_node(number);
+    Cell *cell = create_node(number);
 
     insert_node_beginning(cell, listPtr);
 }
 
-void insert_node(Cell * cell, Cell * afterWhat, List * listPtr) {
+void insert_node(Cell *cell, Cell *afterWhat, List *listPtr) {
     if (cell->next != NULL) {
         printf("Cannot insert not a single node");
         exit(1);
@@ -58,14 +58,14 @@ void insert_node(Cell * cell, Cell * afterWhat, List * listPtr) {
     }
 }
 
-void insert(int number, Cell * afterWhat, List * listPtr) {
-    Cell * cell = create_node(number);
+void insert(int number, Cell *afterWhat, List *listPtr) {
+    Cell *cell = create_node(number);
 
     insert_node(cell, afterWhat, listPtr);
 }
 
-Cell * find(int number, List list) {
-    Cell * current = list;
+Cell *find(int number, List list) {
+    Cell *current = list;
 
     while (current != NULL) {
         if (current->number == number) {
@@ -80,7 +80,7 @@ Cell * find(int number, List list) {
 
 
 void print_list(List list) {
-    Cell * current = list;
+    Cell *current = list;
 
     printf("[");
 
@@ -97,6 +97,24 @@ void print_list(List list) {
     printf("]\n");
 }
 
+void remove_node(Cell *cell, List *list) {
+    Cell *prev = (*list);
+
+    if (prev == NULL) {
+        printf("List is empty");
+        return;
+    }
+
+    while (prev->next != cell) {
+        prev = prev->next;
+
+        if (prev->next == NULL) return; // no element found
+    }
+
+    prev->next = cell->next;
+    cell->next = NULL;
+}
+
 int main() {
     List list = NULL;
 
@@ -110,5 +128,8 @@ int main() {
     print_list(list);
 
     insert(3, find(2, list), &list);
+    print_list(list);
+
+    remove_node(find(3, list), &list);
     print_list(list);
 }
