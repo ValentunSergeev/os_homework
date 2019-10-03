@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   1184	    552	      8	   1744	    6d0	week07/a.out
