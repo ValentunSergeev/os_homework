@@ -1,0 +1,11 @@
+ex1 results:
+10 frames - Hit/Miss: 0.007049
+50 frames - Hit/Miss: 0.048218
+100 frames - Hit/Miss: 0.114827
+
+ex2:
+min: 1, 2, 3, 4, ..., 1000 - Hit/Miss: 0.000000 - no page is participating twice, so on every tick page fault will occur
+max: 1, 2, .. 10 repeated 100 times - Hit/Miss: 99.000000 - ideal situation when requested always in memory (except first load, of course,
+that's why we have 99% rate (first 10 references (out of 1000) will cause page faults)
+
+(You can look at generator.c if you have any questions about what the sequences are)
