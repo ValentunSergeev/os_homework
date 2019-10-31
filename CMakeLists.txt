@@ -3,6 +3,6 @@ project(os_homework C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(os_homework week09/ex1.c #[[week09/generator.c]])
+add_executable(os_homework week11/ex4.c)
 find_package(Threads REQUIRED)
 target_link_libraries(os_homework PRIVATE Threads::Threads)

@@ -1,0 +1,14 @@
+3-1 output:
+    Hello\nHello\n
+3-2 output:
+    Hello\n\n\n
+
+The difference in output happens because stdout buffer is line buffered (when connected to the terminal)
+Lets consider second case first:
+    After first printf, internal buffer will contain "Hello", but it is unflushed.
+    After fork child process inherits every part of the parent process, including the unflushed output buffer.
+    This effectively copies the unflushed buffer to each child process.
+    So, after second printf in both processes both buffer contains "Hello\n", which will be printed twice (two processes - two same buffers)
+However, in the first case:
+    After first printf, internal buffer will be empty, and "Hello\n" will be printed
+    The child will inherit emty buffer, so then "\n" will be printed both in parent and child processes
